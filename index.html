@@ -5,109 +5,170 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>마산무학여자고등학교 급식 정보</title>
   <style>
+    /* 폰트 설정 */
+    @font-face {
+        font-family: 'NexonMaplestory';
+        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/MaplestoryOTFLight.woff') format('woff');
+        font-weight: 300;
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: 'NexonMaplestory';
+        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/MaplestoryOTFBold.woff') format('woff');
+        font-weight: 700;
+        font-display: swap;
+    }
+
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      font-family: 'NexonMaplestory', sans-serif;
+      font-weight: 300;
     }
+
+    /* 귀여운 파스텔톤 배경 및 아기자기한 오라 */
     body {
-      background-color: #f1f5f9;
-      color: #334155;
+      background: linear-gradient(135deg, #fff0f5 0%, #eef2ff 50%, #fff5e6 100%);
+      color: #4a4a4a;
       display: flex;
       justify-content: center;
       align-items: center;
       min-height: 100vh;
       padding: 20px;
     }
+
     .container {
       background: #ffffff;
-      border-radius: 16px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+      border-radius: 28px;
+      box-shadow: 0 12px 30px rgba(255, 182, 193, 0.35);
       width: 100%;
       max-width: 440px;
-      padding: 24px;
+      padding: 28px 24px 20px 24px;
+      border: 3px solid #ffe3e8;
+      position: relative;
     }
+
     .header {
       text-align: center;
-      margin-bottom: 20px;
+      margin-bottom: 22px;
     }
+
     .header h1 {
-      font-size: 1.25rem;
-      color: #0f172a;
-      margin-bottom: 4px;
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #ff5e7e;
+      margin-bottom: 6px;
+      letter-spacing: -0.5px;
     }
+
     .header p {
-      font-size: 0.875rem;
-      color: #64748b;
+      font-size: 0.9rem;
+      color: #a0a0a0;
     }
+
     .search-box {
       display: flex;
       gap: 8px;
       margin-bottom: 20px;
     }
+
     input[type="date"] {
       flex: 1;
-      padding: 10px 12px;
-      border: 1px solid #cbd5e1;
-      border-radius: 8px;
-      font-size: 0.95rem;
+      padding: 10px 14px;
+      border: 2px solid #ffd1dc;
+      border-radius: 16px;
+      font-size: 0.9rem;
       outline: none;
+      color: #555;
+      background-color: #fffafb;
+      transition: border-color 0.2s;
     }
+
     input[type="date"]:focus {
-      border-color: #2563eb;
+      border-color: #ff758c;
     }
+
     button {
       padding: 10px 18px;
-      background-color: #2563eb;
+      background: linear-gradient(135deg, #ff758c 0%, #ff8fa3 100%);
       color: white;
       border: none;
-      border-radius: 8px;
-      font-weight: 600;
+      border-radius: 16px;
+      font-weight: 700;
+      font-size: 0.95rem;
       cursor: pointer;
-      transition: background-color 0.2s;
+      box-shadow: 0 4px 10px rgba(255, 117, 140, 0.3);
+      transition: transform 0.1s, box-shadow 0.2s;
     }
+
     button:hover {
-      background-color: #1d4ed8;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 14px rgba(255, 117, 140, 0.4);
     }
+
+    button:active {
+      transform: translateY(0);
+    }
+
     .meal-card {
-      background: #f8fafc;
-      border: 1px solid #e2e8f0;
-      border-radius: 12px;
-      padding: 18px;
+      background: #fff9fa;
+      border: 2px dashed #ffccd5;
+      border-radius: 20px;
+      padding: 20px;
       min-height: 180px;
     }
+
     .meal-type {
-      font-size: 1rem;
+      font-size: 1.05rem;
       font-weight: 700;
-      color: #1e293b;
+      color: #ff5e7e;
       margin-bottom: 12px;
       padding-bottom: 6px;
-      border-bottom: 2px solid #cbd5e1;
+      border-bottom: 2px solid #ffd1dc;
     }
+
     .meal-list {
       list-style: none;
     }
+
     .meal-list li {
       padding: 5px 0;
-      font-size: 0.925rem;
-      color: #475569;
-      border-bottom: 1px dashed #e2e8f0;
+      font-size: 0.92rem;
+      color: #555;
+      border-bottom: 1px dashed #ffe3e8;
     }
+
     .meal-list li:last-child {
       border-bottom: none;
     }
+
     .cal-info {
       margin-top: 14px;
       font-size: 0.8rem;
-      color: #64748b;
+      color: #999;
       text-align: right;
+      font-weight: 700;
     }
+
     .status-msg {
       text-align: center;
-      color: #64748b;
+      color: #aaa;
       padding: 40px 0;
       font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    /* 푸터 스타일 */
+    .footer {
+      margin-top: 20px;
+      padding-top: 12px;
+      border-top: 1px dashed #ffe3e8;
+      text-align: center;
+      font-size: 0.72rem;
+      color: #b0b0b0;
+      letter-spacing: -0.2px;
     }
   </style>
 </head>
@@ -115,8 +176,8 @@
 
 <div class="container">
   <div class="header">
-    <h1>🏫 마산무학여자고등학교</h1>
-    <p>오늘의 급식 메뉴</p>
+    <h1>🎀 마산무학여자고등학교</h1>
+    <p>오늘의 맛있는 급식 메뉴 🍱</p>
   </div>
 
   <div class="search-box">
@@ -125,7 +186,11 @@
   </div>
 
   <div class="meal-card" id="resultArea">
-    <div class="status-msg">날짜를 선택한 후 조회 버튼을 눌러주세요.</div>
+    <div class="status-msg">날짜를 선택하고 조회 버튼을 눌러주세요! ✨</div>
+  </div>
+
+  <div class="footer">
+    Developed for educational purposes by Joo-yeon, Park
   </div>
 </div>
 
@@ -142,7 +207,7 @@
     const resultArea = document.getElementById('resultArea');
 
     if (!dateValue) {
-      alert('날짜를 선택해주세요.');
+      alert('날짜를 선택해주세요!');
       return;
     }
 
@@ -150,7 +215,7 @@
     const formattedDate = dateValue.replace(/-/g, '');
     const apiUrl = `https://open.neis.go.kr/hub/mealServiceDietInfo?ATPT_OFCDC_SC_CODE=S10&SD_SCHUL_CODE=9010237&MLSV_YMD=${formattedDate}`;
 
-    resultArea.innerHTML = '<div class="status-msg">급식 정보를 불러오는 중...</div>';
+    resultArea.innerHTML = '<div class="status-msg">급식 정보를 맛있게 불러오는 중... 🍳</div>';
 
     try {
       const response = await fetch(apiUrl);
@@ -162,17 +227,17 @@
       const parser = new DOMParser();
       const xmlDoc = parser.parseFromString(xmlText, "text/xml");
 
-      // API 에러 코드 확인
+      // API 결과 코드 확인
       const resultCode = xmlDoc.querySelector('RESULT > CODE');
       if (resultCode && resultCode.textContent !== 'INFO-000') {
         const message = xmlDoc.querySelector('RESULT > MESSAGE')?.textContent || '급식 정보가 없습니다.';
-        resultArea.innerHTML = `<div class="status-msg">${message}</div>`;
+        resultArea.innerHTML = `<div class="status-msg">😴 ${message}</div>`;
         return;
       }
 
       const rows = xmlDoc.querySelectorAll('row');
       if (rows.length === 0) {
-        resultArea.innerHTML = '<div class="status-msg">해당 날짜의 급식 정보가 없습니다.</div>';
+        resultArea.innerHTML = '<div class="status-msg">😴 해당 날짜의 급식 정보가 없습니다.</div>';
         return;
       }
 
@@ -185,17 +250,17 @@
         // 메뉴 내 포함된 <br/> 태그 기준 배열 분리
         const dishes = rawDish.split(/<br\s*\/?>/i);
 
-        html += `<div class="meal-type">${mealType}</div>`;
+        html += `<div class="meal-type">🍴 ${mealType}</div>`;
         html += `<ul class="meal-list">`;
         dishes.forEach(dish => {
           if (dish.trim()) {
-            html += `<li>${dish.trim()}</li>`;
+            html += `<li>• ${dish.trim()}</li>`;
           }
         });
         html += `</ul>`;
 
         if (calInfo) {
-          html += `<div class="cal-info">열량: ${calInfo}</div>`;
+          html += `<div class="cal-info">⚡ 열량: ${calInfo}</div>`;
         }
       });
 
@@ -203,7 +268,7 @@
 
     } catch (error) {
       console.error(error);
-      resultArea.innerHTML = '<div class="status-msg">급식 정보를 불러오지 못했습니다.</div>';
+      resultArea.innerHTML = '<div class="status-msg">😥 급식 정보를 불러오지 못했습니다.</div>';
     }
   }
 </script>
